@@ -103,5 +103,5 @@ The portal is optimized for split deployment:
 - **Database Hosting:** MongoDB Atlas Cloud
 
 <div align="center">
-  <i>Built with ❤️ for the Hackathon</i>
+  <i>Built with ❤️ as a Mini Project</i>
 </div>
