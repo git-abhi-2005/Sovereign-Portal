@@ -11,6 +11,10 @@
 
 *Sovereign Portal is a next-generation MERN-stack architecture designed to bridge the gap between citizens and government resources. A seamless, dynamic, and highly secure hub for schemes, jobs, document vaulting, and AI-enabled grievance redressals.*
 
+### 🌐 Live Demo Access
+- **🚀 Live Frontend Website:** [https://sovereign-portal-rust.vercel.app](https://sovereign-portal-rust.vercel.app)
+- **⚙️ Live Backend API:** [https://sovereign-portal-c2ew.onrender.com](https://sovereign-portal-c2ew.onrender.com)
+
 </div>
 
 ---
