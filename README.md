@@ -90,9 +90,9 @@ Make sure you have [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/
 
 This project was built collaboratively with separated system architectures:
 
-* **[Britansh Prabhat Pandey](https://github.com/britansh-pandey)** - Frontend Lead & UI/UX Architect (React, Routing, State Management, Interface Aesthetics).
-* **[Abhishek Yadav]** - Backend & API Developer (Node.js, Express, Controller Logic, JWT Setup).
-* **[Shivang Saxena]** - Database Engineer (MongoDB Schema Modelling, Seed Scripts, Data Integrations).
+* **Britansh Prabhat Pandey & Prateek Modi** - Frontend Leads & UI/UX Architects (React, Routing, State Management, Interface Aesthetics).
+* **Abhishek Yadav** - Backend & API Developer (Node.js, Express, Controller Logic, JWT Setup).
+* **Shivang Saxena** - Database Engineer (MongoDB Schema Modelling, Seed Scripts, Data Integrations).
 
 ---
 
