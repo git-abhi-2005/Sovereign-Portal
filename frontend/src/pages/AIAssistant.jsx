@@ -2,34 +2,67 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Bot, Search, MoreVertical, Send, Mic, Building2, Shield, HeartPulse, GraduationCap, CheckCircle2 } from 'lucide-react';
 
 export default function AIAssistant() {
+
+  // 👉 Chat messages state (initial bot + user message)
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: 'Based on your verified profile, you are eligible for the National Merit Scholarship 2024. Would you like to view the details or start your application?',
-      widget: true
+      text: 'Based on your verified profile, you are eligible for the National Merit Scholarship 2024. Would you like to view details or start your application?',
+      widget: true // 👉 ye batata hai ki niche card show hoga
     },
     {
       sender: 'user',
       text: 'What documents do I need for this application?'
     }
   ]);
+
+  // 👉 Input field ka state
   const [inputVal, setInputVal] = useState('');
+
+  // 👉 Auto scroll ke liye reference
   const chatEndRef = useRef(null);
 
+  // 👉 Message send function
   const handleSend = () => {
+
+    // 👉 Empty message send na ho
     if (!inputVal.trim()) return;
+
+    // 👉 User ka message add karo chat me
     setMessages(prev => [...prev, { sender: 'user', text: inputVal }]);
+
     setInputVal('');
 
+    // 👉 Fake AI delay (real API lagane ke liye yahan replace kar sakta hai)
     setTimeout(() => {
-      let reply = 'I am processing your query securely. Here is the relevant information from state databases.';
-      if (inputVal.toLowerCase().includes('hi') || inputVal.toLowerCase().includes('hello')) {
-        reply = 'Hello! How can I assist you with state services today?';
+
+      let reply = '';
+
+      const userMsg = inputVal.toLowerCase();
+
+      // 👉 Basic AI logic (conditions ke through smart reply)
+      if (userMsg.includes('hi') || userMsg.includes('hello')) {
+        reply = 'Hello 👋 Welcome to the State Portal Assistant. I can help you with scholarships, documents, applications, and more. What would you like to explore today?';
+
+      } else if (userMsg.includes('document')) {
+        reply = 'For the National Merit Scholarship, you typically need the following documents:\n\n• Aadhaar Card\n• Income Certificate\n• Previous Academic Marksheet\n• Bank Account Details\n• Passport Size Photo\n\nMake sure all documents are scanned clearly before uploading. Would you like help uploading them?';
+
+      } else if (userMsg.includes('scholarship')) {
+        reply = 'The National Merit Scholarship provides financial assistance to students from economically weaker sections. You can apply online, track status, and receive benefits directly in your bank account.\n\nWould you like me to guide you through the application process step-by-step?';
+
+      } else {
+        // 👉 Default AI response (improved)
+        reply = 'I am securely processing your request 🔐\n\nBased on available government records, I can assist you with:\n\n• Finding schemes you are eligible for\n• Tracking application status\n• Document verification & upload\n• Nearby services like hospitals & offices\n\nPlease tell me more about what you need so I can guide you better.';
       }
+
+      // 👉 Bot ka response add karo
       setMessages(prev => [...prev, { sender: 'bot', text: reply }]);
+
     }, 1000);
+
   };
 
+  // 👉 Har new message pe scroll bottom
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -37,125 +70,79 @@ export default function AIAssistant() {
   return (
     <div style={{ height: 'calc(100vh - 120px)', display: 'flex', flexDirection: 'column', maxWidth: '900px', margin: '0 auto', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
 
-
+      {/* 👉 HEADER */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem', borderBottom: '1px solid var(--border-light)' }}>
+
+        {/* 👉 Left side (logo + name) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ background: 'var(--brand-yellow)', padding: '0.5rem', borderRadius: '8px' }}>
             <Bot size={24} color="var(--brand-blue)" />
           </div>
+
           <div>
-            <h3 style={{ fontSize: '1.1rem', color: 'var(--brand-blue)', fontWeight: 700 }}>Portal Assistant</h3>
+            <h3 style={{ fontSize: '1.1rem', color: 'var(--brand-blue)', fontWeight: 700 }}>
+              Portal Assistant
+            </h3>
+
+            {/* 👉 Online indicator */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', color: '#16a34a', fontWeight: 600 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#16a34a' }}></div> ONLINE & SECURED
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#16a34a' }}></div>
+              ONLINE & SECURED
             </div>
           </div>
         </div>
+
+        {/* 👉 Right side icons */}
         <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)' }}>
           <Search size={20} style={{ cursor: 'pointer' }} />
           <MoreVertical size={20} style={{ cursor: 'pointer' }} />
         </div>
       </div>
 
-
+      {/* 👉 CHAT BODY */}
       <div style={{ flex: 1, overflowY: 'auto', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fafafa' }}>
 
-
-        <div style={{ textAlign: 'center', marginBottom: '3rem', marginTop: '2rem' }}>
-          <div style={{ background: 'var(--brand-blue)', width: '60px', height: '60px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', transform: 'rotate(45deg)' }}>
-            <div style={{ width: '12px', height: '12px', background: 'white', borderRadius: '50%', transform: 'rotate(-45deg)' }}></div>
-          </div>
-          <h2 style={{ fontSize: '2rem', color: 'var(--brand-blue)', fontWeight: 700, marginBottom: '1rem' }}>How can the State assist you today?</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', lineHeight: 1.5 }}>
-            I can help you find schemes, track applications, or locate essential citizen services in real-time.
-          </p>
-        </div>
-
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', width: '100%', maxWidth: '700px', marginBottom: '3rem' }}>
-          <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><GraduationCap size={18} /> Higher Education</h4>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>How to apply for a scholarship?</p>
-          </div>
-          <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><HeartPulse size={18} /> Emergency Services</h4>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Find me nearby hospitals</p>
-          </div>
-          <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Building2 size={18} /> Welfare Tracking</h4>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Where is my Ration Card?</p>
-          </div>
-          <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Shield size={18} /> Identity Vault</h4>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Download my verified Degree</p>
-          </div>
-        </div>
-
+        {/* 👉 Messages rendering */}
         {messages.map((msg, idx) => (
+
           msg.sender === 'bot' ? (
-            <div key={idx} style={{ width: '100%', maxWidth: '700px', display: 'flex', gap: '1.5rem', marginBottom: '2rem', alignSelf: 'center' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--brand-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Bot size={20} color="white" />
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ background: '#f0f4f8', padding: '1.25rem', borderRadius: '0 16px 16px 16px', color: 'var(--text-dark)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: msg.widget ? '1rem' : '0' }}>
-                  {msg.text}
-                </div>
-                {msg.widget && (
-                  <div style={{ display: 'flex', background: 'white', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-light)', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-                    <div style={{ padding: '1.5rem', flex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#16a34a', fontSize: '0.7rem', fontWeight: 700, marginBottom: '0.5rem', letterSpacing: '0.5px' }}>
-                        <CheckCircle2 size={14} /> RECOMMENDED SERVICE
-                      </div>
-                      <h4 style={{ fontSize: '1.1rem', color: 'var(--brand-blue)', marginBottom: '0.5rem' }}>National Merit Scholarship Program</h4>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '1.5rem' }}>
-                        Providing financial aid to meritorious students from economically weaker sections.
-                      </p>
-                      <button className="btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '0.85rem' }}>Apply Now</button>
-                    </div>
-                    <div style={{ width: '180px', position: 'relative' }}>
-                      <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=400&auto=format&fit=crop" style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="University" />
-                      <div style={{ position: 'absolute', inset: 0, background: 'rgba(22, 163, 74, 0.4)', mixBlendMode: 'multiply' }}></div>
-                    </div>
-                  </div>
-                )}
-              </div>
+
+            // 👉 Bot message UI
+            <div key={idx}>
+              {/* Bot bubble */}
+              {msg.text}
             </div>
+
           ) : (
-            <div key={idx} style={{ width: '100%', maxWidth: '700px', display: 'flex', justifyContent: 'flex-end', gap: '1rem', marginBottom: '2rem', alignSelf: 'center' }}>
-              <div style={{ background: 'var(--brand-blue)', color: 'white', padding: '1rem 1.25rem', borderRadius: '16px 0 16px 16px', fontSize: '0.95rem' }}>
-                {msg.text}
-              </div>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#e2e8f0', overflow: 'hidden', flexShrink: 0 }}>
-                <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" style={{ width: '100%' }} alt="User" />
-              </div>
+
+            // 👉 User message UI
+            <div key={idx}>
+              {msg.text}
             </div>
+
           )
         ))}
-        <div ref={chatEndRef} />
 
+        <div ref={chatEndRef} />
       </div>
 
-
+      {/* 👉 INPUT BOX */}
       <div style={{ padding: '1.5rem 2rem', background: 'white', borderTop: '1px solid var(--border-light)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', background: '#f1f5f9', padding: '0.5rem 0.5rem 0.5rem 1.5rem', borderRadius: '100px' }}>
-          <Bot size={20} color="var(--text-muted)" style={{ marginRight: '1rem' }} />
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+
           <input
             type="text"
             placeholder="Type your query here..."
             value={inputVal}
             onChange={e => setInputVal(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSend()}
-            style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', padding: '0', fontSize: '0.95rem', height: '40px' }}
           />
-          <button style={{ background: 'transparent', border: 'none', padding: '0.5rem', cursor: 'pointer', color: 'var(--text-muted)' }}>
-            <Mic size={20} />
-          </button>
-          <button onClick={handleSend} style={{ background: 'var(--brand-blue)', color: 'white', border: 'none', padding: '0.6rem 1rem', borderRadius: '100px', marginLeft: '0.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+          {/* 👉 Send button */}
+          <button onClick={handleSend}>
             <Send size={18} />
           </button>
-        </div>
-        <div style={{ textAlign: 'center', fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '1rem', letterSpacing: '1px', fontWeight: 600 }}>
-          END-TO-END ENCRYPTED SOVEREIGN CHANNEL
+
         </div>
       </div>
 
