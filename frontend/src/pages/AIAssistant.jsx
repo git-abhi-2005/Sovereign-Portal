@@ -20,11 +20,11 @@ export default function AIAssistant() {
     if (!inputVal.trim()) return;
     setMessages(prev => [...prev, { sender: 'user', text: inputVal }]);
     setInputVal('');
-    
+
     setTimeout(() => {
       let reply = 'I am processing your query securely. Here is the relevant information from state databases.';
       if (inputVal.toLowerCase().includes('hi') || inputVal.toLowerCase().includes('hello')) {
-         reply = 'Hello there! How can I assist you with state services today?';
+        reply = 'Hello! How can I assist you with state services today?';
       }
       setMessages(prev => [...prev, { sender: 'bot', text: reply }]);
     }, 1000);
@@ -36,8 +36,8 @@ export default function AIAssistant() {
 
   return (
     <div style={{ height: 'calc(100vh - 120px)', display: 'flex', flexDirection: 'column', maxWidth: '900px', margin: '0 auto', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
-      
-      
+
+
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem', borderBottom: '1px solid var(--border-light)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ background: 'var(--brand-yellow)', padding: '0.5rem', borderRadius: '8px' }}>
@@ -56,36 +56,36 @@ export default function AIAssistant() {
         </div>
       </div>
 
-      
+
       <div style={{ flex: 1, overflowY: 'auto', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fafafa' }}>
-        
-        
+
+
         <div style={{ textAlign: 'center', marginBottom: '3rem', marginTop: '2rem' }}>
-           <div style={{ background: 'var(--brand-blue)', width: '60px', height: '60px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', transform: 'rotate(45deg)' }}>
-             <div style={{ width: '12px', height: '12px', background: 'white', borderRadius: '50%', transform: 'rotate(-45deg)' }}></div>
-           </div>
-           <h2 style={{ fontSize: '2rem', color: 'var(--brand-blue)', fontWeight: 700, marginBottom: '1rem' }}>How can the State assist you today?</h2>
-           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', lineHeight: 1.5 }}>
-             I can help you find schemes, track applications, or locate essential citizen services in real-time.
-           </p>
+          <div style={{ background: 'var(--brand-blue)', width: '60px', height: '60px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', transform: 'rotate(45deg)' }}>
+            <div style={{ width: '12px', height: '12px', background: 'white', borderRadius: '50%', transform: 'rotate(-45deg)' }}></div>
+          </div>
+          <h2 style={{ fontSize: '2rem', color: 'var(--brand-blue)', fontWeight: 700, marginBottom: '1rem' }}>How can the State assist you today?</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', lineHeight: 1.5 }}>
+            I can help you find schemes, track applications, or locate essential citizen services in real-time.
+          </p>
         </div>
 
-        
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', width: '100%', maxWidth: '700px', marginBottom: '3rem' }}>
           <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><GraduationCap size={18}/> Higher Education</h4>
+            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><GraduationCap size={18} /> Higher Education</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>How to apply for a scholarship?</p>
           </div>
           <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><HeartPulse size={18}/> Emergency Services</h4>
+            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><HeartPulse size={18} /> Emergency Services</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Find me nearby hospitals</p>
           </div>
           <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Building2 size={18}/> Welfare Tracking</h4>
+            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Building2 size={18} /> Welfare Tracking</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Where is my Ration Card?</p>
           </div>
           <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Shield size={18}/> Identity Vault</h4>
+            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Shield size={18} /> Identity Vault</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Download my verified Degree</p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function AIAssistant() {
           msg.sender === 'bot' ? (
             <div key={idx} style={{ width: '100%', maxWidth: '700px', display: 'flex', gap: '1.5rem', marginBottom: '2rem', alignSelf: 'center' }}>
               <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--brand-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                 <Bot size={20} color="white" />
+                <Bot size={20} color="white" />
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ background: '#f0f4f8', padding: '1.25rem', borderRadius: '0 16px 16px 16px', color: 'var(--text-dark)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: msg.widget ? '1rem' : '0' }}>
@@ -126,7 +126,7 @@ export default function AIAssistant() {
                 {msg.text}
               </div>
               <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#e2e8f0', overflow: 'hidden', flexShrink: 0 }}>
-                 <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" style={{ width: '100%' }} alt="User" />
+                <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" style={{ width: '100%' }} alt="User" />
               </div>
             </div>
           )
@@ -135,17 +135,17 @@ export default function AIAssistant() {
 
       </div>
 
-      
+
       <div style={{ padding: '1.5rem 2rem', background: 'white', borderTop: '1px solid var(--border-light)' }}>
         <div style={{ display: 'flex', alignItems: 'center', background: '#f1f5f9', padding: '0.5rem 0.5rem 0.5rem 1.5rem', borderRadius: '100px' }}>
           <Bot size={20} color="var(--text-muted)" style={{ marginRight: '1rem' }} />
-          <input 
-            type="text" 
-            placeholder="Type your query here..." 
+          <input
+            type="text"
+            placeholder="Type your query here..."
             value={inputVal}
             onChange={e => setInputVal(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSend()}
-            style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', padding: '0', fontSize: '0.95rem', height: '40px' }} 
+            style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', padding: '0', fontSize: '0.95rem', height: '40px' }}
           />
           <button style={{ background: 'transparent', border: 'none', padding: '0.5rem', cursor: 'pointer', color: 'var(--text-muted)' }}>
             <Mic size={20} />
