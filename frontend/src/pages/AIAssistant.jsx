@@ -85,7 +85,7 @@ export default function AIAssistant() {
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Where is my Ration Card?</p>
           </div>
           <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--border-light)', cursor: 'pointer' }}>
-            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Shield size={18} /> Identity Vault</h4>
+            <h4 style={{ color: 'var(--brand-blue)', marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Shield size={18} /> Document's Vault</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Download my verified Degree</p>
           </div>
         </div>
